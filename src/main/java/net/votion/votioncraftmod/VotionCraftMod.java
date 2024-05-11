@@ -12,6 +12,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.votion.votioncraftmod.block.ModBlocks;
+import net.votion.votioncraftmod.item.ModCreativeModTabs;
 import net.votion.votioncraftmod.item.ModItems;
 import org.slf4j.Logger;
 
@@ -26,7 +28,9 @@ public class VotionCraftMod {
     public VotionCraftMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModCreativeModTabs.register(modEventBus);
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
