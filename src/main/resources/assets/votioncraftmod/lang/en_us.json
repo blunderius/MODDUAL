@@ -1,3 +1,8 @@
 {
-  "item.votioncraftmod.powerorb": "Orb of Power"
+  "item.votioncraftmod.powerorb": "Orb of Power",
+  "item.votioncraftmod.basicgear": "Basic Gear",
+
+  "block.votioncraftmod.artificer_table": "Artificer Table",
+
+  "creativetab.tutorial_tab": "Krasses Tab"
 }

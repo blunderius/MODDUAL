@@ -13,6 +13,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> PowerOrb = ITEMS.register("powerorb",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BasicGear = ITEMS.register("basicgear",
+            () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

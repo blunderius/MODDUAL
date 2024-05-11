@@ -42,6 +42,7 @@ public class VotionCraftMod {
 
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.PowerOrb);
+            event.accept(ModItems.BasicGear);
         }
 
     }
