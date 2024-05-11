@@ -11,7 +11,7 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, VotionCraftMod.MOD_ID);
 
-    public static final RegistryObject<Item> PowerOrb = ITEMS.register("Powerorb",
+    public static final RegistryObject<Item> PowerOrb = ITEMS.register("powerorb",
             () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus){
