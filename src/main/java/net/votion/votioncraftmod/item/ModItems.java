@@ -6,6 +6,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.votion.votioncraftmod.VotionCraftMod;
+import net.votion.votioncraftmod.item.custom.OrbThrowerItem;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -15,6 +16,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BasicGear = ITEMS.register("basicgear",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> OrbThrower = ITEMS.register("orbthrower",
+            () -> new OrbThrowerItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
