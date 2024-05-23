@@ -17,7 +17,7 @@ public class ModItems {
     public static final RegistryObject<Item> BasicGear = ITEMS.register("basicgear",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> OrbThrower = ITEMS.register("orbthrower",
-            () -> new OrbThrowerItem(new Item.Properties()));
+            () -> new OrbThrowerItem(new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

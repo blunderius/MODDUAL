@@ -15,10 +15,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.votion.votioncraftmod.block.ModBlocks;
+import net.votion.votioncraftmod.block.custom.EnhancementStation;
 import net.votion.votioncraftmod.block.entity.ModBlockEntities;
 import net.votion.votioncraftmod.item.ModCreativeModTabs;
 import net.votion.votioncraftmod.item.ModItems;
 import net.votion.votioncraftmod.screen.ArtificerTableScreen;
+import net.votion.votioncraftmod.screen.EnhancementStationScreen;
 import net.votion.votioncraftmod.screen.ModMenuTypes;
 import org.slf4j.Logger;
 
@@ -74,6 +76,7 @@ public class VotionCraftMod {
         public static void onClientSetup(FMLClientSetupEvent event) {
 
             MenuScreens.register(ModMenuTypes.ARTIFICER_TABLE_MENU.get(), ArtificerTableScreen::new);
+            MenuScreens.register(ModMenuTypes.ENHANCEMENT_STATION_MENU.get(), EnhancementStationScreen::new);
 
         }
     }

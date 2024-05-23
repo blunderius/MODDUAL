@@ -25,6 +25,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.ARTIFICER_TABLE.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/artificer_table")));
+
+        simpleBlockWithItem(ModBlocks.ENHANCEMENT_STATION.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/enhancement_station")));
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

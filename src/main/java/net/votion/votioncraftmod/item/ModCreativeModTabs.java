@@ -20,9 +20,11 @@ public class ModCreativeModTabs {
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.PowerOrb.get());
                         pOutput.accept(ModItems.BasicGear.get());
+                        pOutput.accept(ModItems.OrbThrower.get());
 
                         pOutput.accept(ModBlocks.SCRAP_BLOCK.get());
                         pOutput.accept(ModBlocks.ARTIFICER_TABLE.get());
+                        pOutput.accept(ModBlocks.ENHANCEMENT_STATION.get());
 
                     })
                     .build());

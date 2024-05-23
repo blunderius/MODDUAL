@@ -14,6 +14,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.votion.votioncraftmod.VotionCraftMod;
 import net.votion.votioncraftmod.block.custom.ArtificerTable;
+import net.votion.votioncraftmod.block.custom.EnhancementStation;
 import net.votion.votioncraftmod.item.ModItems;
 
 import java.util.function.Supplier;
@@ -26,6 +27,8 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> ARTIFICER_TABLE = registerBlock("artificer_table",
             () -> new ArtificerTable(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+    public static final RegistryObject<Block> ENHANCEMENT_STATION = registerBlock("enhancement_station",
+            () -> new EnhancementStation(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
 
 
 

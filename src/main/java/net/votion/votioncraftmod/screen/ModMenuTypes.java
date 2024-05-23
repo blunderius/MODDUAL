@@ -9,6 +9,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.votion.votioncraftmod.VotionCraftMod;
+import net.votion.votioncraftmod.block.custom.EnhancementStation;
 
 import java.rmi.registry.Registry;
 
@@ -18,6 +19,9 @@ public class ModMenuTypes {
 
     public static final RegistryObject<MenuType<ArtificerTableMenu>> ARTIFICER_TABLE_MENU =
             registerMenuType("artificer_table_menu", ArtificerTableMenu::new);
+
+    public static final RegistryObject<MenuType<EnhancementStationMenu>> ENHANCEMENT_STATION_MENU =
+            registerMenuType("enhancement_station_menu", EnhancementStationMenu::new);
 
     private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

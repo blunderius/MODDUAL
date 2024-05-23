@@ -21,31 +21,41 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.votion.votioncraftmod.screen.ArtificerTableMenu;
+import net.votion.votioncraftmod.screen.EnhancementStationMenu;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-
-public class ArtificerTableEntity extends BlockEntity implements MenuProvider {
+public class EnhancementStationEntity extends BlockEntity implements MenuProvider{
     private final ItemStackHandler itemHandler = new ItemStackHandler(2);
 
-    private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 1;
+    private static final int HEAD_SLOT = 0;
+    private static final int LEFT_ARM_SLOT = 1;
+    private static final int TORSO_SLOT = 2;
+    private static final int RIGHT_ARM_SLOT = 3;
+    private static final int LEFT_LEG_SLOT = 4;
+    private static final int RIGHT_LEG_SLOT = 5;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
     protected final ContainerData data;
-    private int progress = 0;
-    private int maxProgress = 78;
+    private int head = -1;
+    private int leftArm = -1;
+    private int torso = -1;
+    private int rightArm = -1;
+    private int leftLeg = -1;
+    private int rightLeg = -1;
 
-    public ArtificerTableEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.ARTIFICER_TABLE_BE.get(), pPos, pBlockState);
+    public EnhancementStationEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModBlockEntities.ENHANCEMENT_STATION_BE.get(), pPos, pBlockState);
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
                 return switch (pIndex) {
-                    case 0 -> ArtificerTableEntity.this.progress;
-                    case 1 -> ArtificerTableEntity.this.maxProgress;
+                    case 0 -> EnhancementStationEntity.this.head;
+                    case 1 -> EnhancementStationEntity.this.leftArm;
+                    case 2 -> EnhancementStationEntity.this.torso;
+                    case 3 -> EnhancementStationEntity.this.rightArm;
+                    case 4 -> EnhancementStationEntity.this.leftLeg;
+                    case 5 -> EnhancementStationEntity.this.rightLeg;
                     default -> 0;
                 };
             }
@@ -53,15 +63,19 @@ public class ArtificerTableEntity extends BlockEntity implements MenuProvider {
             @Override
             public void set(int pIndex, int pValue) {
                 switch (pIndex) {
-                    case 0 -> ArtificerTableEntity.this.progress = pValue;
-                    case 1 -> ArtificerTableEntity.this.maxProgress = pValue;
+                    case 0 -> EnhancementStationEntity.this.head = pIndex;
+                    case 1 -> EnhancementStationEntity.this.leftArm = pValue;
+                    case 2 -> EnhancementStationEntity.this.torso = pValue;
+                    case 3 -> EnhancementStationEntity.this.rightArm = pValue;
+                    case 4 -> EnhancementStationEntity.this.leftLeg = pValue;
+                    case 5 -> EnhancementStationEntity.this.rightLeg = pValue;
                 }
 
             }
 
             @Override
             public int getCount() {
-                return 2;
+                return 6;
             }
         };
     }
@@ -97,41 +111,21 @@ public class ArtificerTableEntity extends BlockEntity implements MenuProvider {
     }
 
     public Component getDisplayName() {
-        return Component.translatable("block.votioncraftmod.artificer_table");
+        return Component.translatable("block.votioncraftmod.enhancement_station");
     }
 
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
 
-        return new ArtificerTableMenu(pContainerId, pPlayerInventory, this, this.data);
+        return new EnhancementStationMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
-    @Override
-    protected void saveAdditional(CompoundTag pTag) {
-        pTag.put("inventory", itemHandler.serializeNBT());
-        pTag.putInt("artificer_table.progress", progress);
 
-        super.saveAdditional(pTag);
-    }
 
-    @Override
+    /*@Override
     public void load(CompoundTag pTag) {
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
-        progress = pTag.getInt("artificer:table.progress");
-    }
-
-    public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
-        if (hasRecipe()) {
-            increaseCraftingProgress();
-            setChanged(pLevel, pPos, pState);
-
-            if (hasProgressFinished()) {
-                craftItem();
-                resetProgress();
-            }
-        } else {
-            resetProgress();
-        }
+        progress = pTag.getInt("enhancement_station.progress");
     }
 
     private void resetProgress() {
@@ -168,6 +162,4 @@ public class ArtificerTableEntity extends BlockEntity implements MenuProvider {
     private boolean canInsertAmountIntoOutputSlot(int count) {
         return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
     }
-
-
-}
+*/}

@@ -9,10 +9,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.votion.votioncraftmod.VotionCraftMod;
 
-public class ArtificerTableScreen extends AbstractContainerScreen<ArtificerTableMenu> {
+public class EnhancementStationScreen extends AbstractContainerScreen<EnhancementStationMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(VotionCraftMod.MOD_ID, "textures/gui/artificer_table_gui.png");
-    public ArtificerTableScreen(ArtificerTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
+            new ResourceLocation(VotionCraftMod.MOD_ID, "textures/gui/enhancement_station_gui.png");
+    public EnhancementStationScreen(EnhancementStationMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
     }
 

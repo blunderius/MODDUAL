@@ -10,21 +10,21 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 import net.votion.votioncraftmod.block.ModBlocks;
-import net.votion.votioncraftmod.block.entity.ArtificerTableEntity;
+import net.votion.votioncraftmod.block.entity.EnhancementStationEntity;
 
-public class ArtificerTableMenu extends AbstractContainerMenu {
-    public final ArtificerTableEntity blockEntity;
+public class EnhancementStationMenu extends AbstractContainerMenu {
+    public final EnhancementStationEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
-    public ArtificerTableMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
+    public EnhancementStationMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
-    public ArtificerTableMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
-        super (ModMenuTypes.ARTIFICER_TABLE_MENU.get(), pContainerId);
+    public EnhancementStationMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
+        super (ModMenuTypes.ENHANCEMENT_STATION_MENU.get(), pContainerId);
         checkContainerSize(inv, 2);
-        blockEntity = ((ArtificerTableEntity) entity);
+        blockEntity = ((EnhancementStationEntity) entity);
         this.level = inv.player.level();
         this.data = data;
 
@@ -105,7 +105,7 @@ public class ArtificerTableMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                pPlayer, ModBlocks.ARTIFICER_TABLE.get());
+                pPlayer, ModBlocks.ENHANCEMENT_STATION.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

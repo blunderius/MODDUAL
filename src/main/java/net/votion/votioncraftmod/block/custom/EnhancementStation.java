@@ -18,14 +18,14 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
-import net.votion.votioncraftmod.block.entity.ArtificerTableEntity;
+import net.votion.votioncraftmod.block.entity.EnhancementStationEntity;
 import net.votion.votioncraftmod.block.entity.ModBlockEntities;
 import org.jetbrains.annotations.Nullable;
 
-public class ArtificerTable extends BaseEntityBlock {
-    public static final VoxelShape SHAPE = Block.box(0,0,0,16,12,16);
+public class EnhancementStation extends BaseEntityBlock{
+    public static final VoxelShape SHAPE = Block.box(0,0,0,16,16,16);
 
-    public ArtificerTable(Properties pProperties) {
+    public EnhancementStation(Properties pProperties) {
         super(pProperties);
     }
 
@@ -43,8 +43,8 @@ public class ArtificerTable extends BaseEntityBlock {
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity((pPos));
-            if (blockEntity instanceof ArtificerTableEntity) {
-                ((ArtificerTableEntity) blockEntity).drops();
+            if (blockEntity instanceof EnhancementStationEntity) {
+                ((EnhancementStationEntity) blockEntity).drops();
             }
         }
 
@@ -55,8 +55,8 @@ public class ArtificerTable extends BaseEntityBlock {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
-            if(entity instanceof ArtificerTableEntity) {
-                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (ArtificerTableEntity)entity, pPos);
+            if(entity instanceof EnhancementStationEntity) {
+                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (EnhancementStationEntity)entity, pPos);
             } else{
                 throw new IllegalStateException("Our Container provider is missing!");
             }
@@ -67,17 +67,6 @@ public class ArtificerTable extends BaseEntityBlock {
 
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new ArtificerTableEntity(pPos, pState);
-    }
-
-    @Nullable
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        if(pLevel.isClientSide()) {
-            return null;
-        }
-
-        return createTickerHelper(pBlockEntityType, ModBlockEntities.ARTIFICER_TABLE_BE.get(),
-                (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
+        return new EnhancementStationEntity(pPos, pState);
     }
 }

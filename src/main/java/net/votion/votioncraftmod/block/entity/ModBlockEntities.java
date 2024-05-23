@@ -19,6 +19,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(ArtificerTableEntity::new,
                             ModBlocks.ARTIFICER_TABLE.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<EnhancementStationEntity>> ENHANCEMENT_STATION_BE =
+            BLOCK_ENTITIES.register("enhancement_station_be", () ->
+                    BlockEntityType.Builder.of(EnhancementStationEntity::new,
+                            ModBlocks.ENHANCEMENT_STATION.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }
